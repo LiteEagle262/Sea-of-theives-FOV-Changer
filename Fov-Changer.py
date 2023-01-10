@@ -21,36 +21,38 @@ if pid is None:
     print(Fore.RED + "Please run the game before executing this.")
     sleep(3)
     sys.exit()
-
-print(Fore.GREEN + """
-    ████████╗██╗░░██╗███████╗  ███╗░░██╗███████╗░██████╗████████╗
-    ╚══██╔══╝██║░░██║██╔════╝  ████╗░██║██╔════╝██╔════╝╚══██╔══╝
-    ░░░██║░░░███████║█████╗░░  ██╔██╗██║█████╗░░╚█████╗░░░░██║░░░
-    ░░░██║░░░██╔══██║██╔══╝░░  ██║╚████║██╔══╝░░░╚═══██╗░░░██║░░░
-    ░░░██║░░░██║░░██║███████╗  ██║░╚███║███████╗██████╔╝░░░██║░░░
-    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚═╝░░╚══╝╚══════╝╚═════╝░░░░╚═╝░░░
-""")
-print(Fore.YELLOW + "What client are you running?...")
-client = input(Fore.YELLOW + "1 | Steam | 2 | Microsoft > ")
-if client == "1":
-    path = "dll/steam.dll"
-    try:
-        inject(pid, path)
-        print(Fore.BLUE + "DLL Injected, This fov is adjustable, press the insert key on your keyboard to open the menu.")
-    except:
-        print(Fore.RED + "\nDLL Injection Failed")
-        print(Fore.BLUE + "\nError:  ------------------------------------------------------")
-        print(Fore.RED + traceback.format_exc())
-        sleep(3)
-        sys.exit()
-elif client == "2":
-    path = "dll/windows.dll"
-    try:
-        inject(pid, path)
-        print(Fore.BLUE + "DLL Injected")
-    except:
-        print(Fore.RED + "\nDLL Injection Failed")
-        print(Fore.BLUE + "\nError:  ------------------------------------------------------")
-        print(Fore.RED + traceback.format_exc())
-        sleep(3)
-        sys.exit()
+else:
+    print(Fore.GREEN + """
+        ████████╗██╗░░██╗███████╗  ███╗░░██╗███████╗░██████╗████████╗
+        ╚══██╔══╝██║░░██║██╔════╝  ████╗░██║██╔════╝██╔════╝╚══██╔══╝
+        ░░░██║░░░███████║█████╗░░  ██╔██╗██║█████╗░░╚█████╗░░░░██║░░░
+        ░░░██║░░░██╔══██║██╔══╝░░  ██║╚████║██╔══╝░░░╚═══██╗░░░██║░░░
+        ░░░██║░░░██║░░██║███████╗  ██║░╚███║███████╗██████╔╝░░░██║░░░
+        ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚═╝░░╚══╝╚══════╝╚═════╝░░░░╚═╝░░░
+    """)
+    print(Fore.YELLOW + "What client are you running?...")
+    client = input(Fore.YELLOW + "1 | Steam | 2 | Microsoft > ")
+    if client == "1":
+        path = "dll/steam.dll"
+        try:
+            print(Fore.CYAN + "Injecting this might take a second....")
+            inject(pid, path)
+            print(Fore.BLUE + "DLL Injected, This fov is adjustable, press the insert key on your keyboard to open the menu.")
+        except:
+            print(Fore.RED + "\nDLL Injection Failed")
+            print(Fore.BLUE + "\nError:  ------------------------------------------------------")
+            print(Fore.RED + traceback.format_exc())
+            sleep(3)
+            sys.exit()
+    elif client == "2":
+        path = "dll/windows.dll"
+        try:
+            print(Fore.CYAN + "Injecting this might take a second....")
+            inject(pid, path)
+            print(Fore.BLUE + "DLL Injected")
+        except:
+            print(Fore.RED + "\nDLL Injection Failed")
+            print(Fore.BLUE + "\nError:  ------------------------------------------------------")
+            print(Fore.RED + traceback.format_exc())
+            sleep(3)
+            sys.exit()
